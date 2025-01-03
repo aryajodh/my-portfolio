@@ -1,6 +1,8 @@
 body {
     margin: 4px;
-    font-family: Arial, sans-serif; 
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: white; 
 }
 
 main, section {
@@ -84,6 +86,82 @@ button:hover {
     min-height: 100vh; /* Ensures the section takes up the full viewport height */
     padding-top: 50px; /* Adds space at the top */
     color: #333; /* Optional text color */
+}
+#hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%; 
+    height: 100v;
+    background: url('../images/hero-image.jpg') no-repeat center center/cover;
+    min-height: 100vh; /* Ensure it’s at least full viewport height */
+    background-attachment: fixed; /* Creates a parallax effect */
+    color: white;
+    position: relative;
+}
+
+
+#hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+#hero p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+#hero button {
+    padding: 15px 30px;
+    font-size: 1rem;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+#hero button:hover {
+    background-color: #0056b3;
+}
+
+#skills {
+    padding: 50px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+.skill {
+    margin: 15px 0;
+}
+
+.skill label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.progress-bar {
+    background-color: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    height: 20px;
+}
+
+.progress {
+    background-color: #007bff;
+    height: 100%;
+    width: 0;
+    transition: width 1s ease-in-out;
+}
+
+#skills .progress:hover {
+    background-color: #0056b3;
 }
 
 
