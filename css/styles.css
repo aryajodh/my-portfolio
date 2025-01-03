@@ -1,9 +1,18 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
+    margin: 4px;
+    font-family: Arial, sans-serif; 
 }
+
+main, section {
+    text-align: left;
+}
+
+main, section {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 
 header {
     background-color: #333;
@@ -60,21 +69,20 @@ button:hover {
 #about {
     display: flex; /* Enables Flexbox */
     flex-direction: column; /* Stacks content vertically */
-    align-items: center; /* Centers content horizontally */
+    align-items: left; /* Centers content horizontally */
     justify-content: flex-start; /* Aligns content towards the top */
-    text-align: center; /* Centers text inside each element */
+    text-align: left; /* Centers text inside each element */
     min-height: 100vh; /* Ensures the section takes full viewport height */
     padding-top: 50px; /* Adds space at the top */
 }
 #projects {
     display: flex; /* Enables Flexbox */
     flex-direction: column; /* Stacks content vertically */
-    align-items: center; /* Centers content horizontally */
+    align-items: left; /* Centers content horizontally */
     justify-content: flex-start; /* Aligns content towards the top */
-    text-align: center; /* Centers text inside the elements */
+    text-align: left; /* Centers text inside the elements */
     min-height: 100vh; /* Ensures the section takes up the full viewport height */
     padding-top: 50px; /* Adds space at the top */
-    background-color: #f3f3f3; /* Optional background */
     color: #333; /* Optional text color */
 }
 
