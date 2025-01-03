@@ -57,3 +57,26 @@ button {
 button:hover {
     background-color: #555;
 }
+#about {
+    display: flex; /* Enables Flexbox */
+    flex-direction: column; /* Stacks content vertically */
+    align-items: center; /* Centers content horizontally */
+    justify-content: flex-start; /* Aligns content towards the top */
+    text-align: center; /* Centers text inside each element */
+    min-height: 100vh; /* Ensures the section takes full viewport height */
+    padding-top: 50px; /* Adds space at the top */
+}
+#projects {
+    display: flex; /* Enables Flexbox */
+    flex-direction: column; /* Stacks content vertically */
+    align-items: center; /* Centers content horizontally */
+    justify-content: flex-start; /* Aligns content towards the top */
+    text-align: center; /* Centers text inside the elements */
+    min-height: 100vh; /* Ensures the section takes up the full viewport height */
+    padding-top: 50px; /* Adds space at the top */
+    background-color: #f3f3f3; /* Optional background */
+    color: #333; /* Optional text color */
+}
+
+
+
