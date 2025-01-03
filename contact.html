@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="projects.html">Projects</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <section id="contact">
+            <h1>Contact Me</h1>
+            <p>Email: <a href="mailto:arya.jodh@gmail.com">arya.jodh@gmail.com</a></p>
+            <p>GitHub: <a href="https://github.com/aryajodh" target="_blank">aryajodh</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/arya-jodh-a75889275/" target="_blank">LinkedIn Profile</a></p>
+            <form action="https://formspree.io/f/mrbbopqy" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="_subject">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit">Send</button>
+                <input type="hidden" name="_next" value="https://aryajodh.github.io/my-portfolio/thank-you.html
+                ">
+            </form>
+        </section>
+    </main>
+    
+    
+    <footer>
+        <p>&copy; 2025 Arya</p>
+    </footer>
+</body>
+</html>
