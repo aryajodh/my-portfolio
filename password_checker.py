@@ -1,8 +1,12 @@
 import re
 import tkinter as tk
 from tkinter import messagebox
+from flask import Flask, render_template, request
+
+app = Flask(__name__)
 
 def check_password_strength(password):
+    """Checks the strength of a given password and provides feedback."""
     strength = 0
     feedback = []
 
@@ -31,22 +35,32 @@ def check_password_strength(password):
         feedback.append("Include at least one digit.")
 
     # Check for special characters
-    if re.search(r"[!@#$%^&*(),.?\":{}|<>]", password):  # Matches common special characters
+    if re.search(r"[!@#$%^&*(),.?\":{}|<>]", password):  
         strength += 1
     else:
         feedback.append("Include at least one special character.")
 
-    # Clamp strength to valid indices of levels
+    # Strength Levels
     levels = ["Very Weak", "Weak", "Moderate", "Strong", "Very Strong"]
     strength = min(strength, len(levels) - 1)
     strength_level = levels[strength]
 
     return strength, strength_level, feedback
 
+# ---------------- FLASK WEB VERSION ----------------
+@app.route("/", methods=["GET", "POST"])
+def web_checker():
+    if request.method == "POST":
+        password = request.form["password"]
+        strength, strength_level, feedback = check_password_strength(password)
+        return render_template("password_checker.html", password=password, strength=strength_level, feedback=feedback)
+    
+    return render_template("password_checker.html", password="", strength="", feedback=[])
 
+# ---------------- CLI VERSION ----------------
 def main_loop():
     print("Welcome to the Password Strength Checker!")
-
+    
     while True:
         password = input("\nEnter a password to check its strength (or type 'exit' to quit): ")
         if password.lower() == 'exit':
@@ -61,7 +75,7 @@ def main_loop():
             for suggestion in feedback:
                 print(f"- {suggestion}")
 
-# GUI Application using Tkinter
+# ---------------- GUI VERSION ----------------
 def evaluate_password():
     password = password_entry.get()
     if not password:
@@ -70,7 +84,6 @@ def evaluate_password():
 
     strength, strength_level, feedback = check_password_strength(password)
     result_text.set(f"Password Strength: {strength_level} ({strength}/5)")
-
     suggestions_text.set("\n".join(feedback) if feedback else "Great password! No suggestions.")
 
 def create_gui():
@@ -99,12 +112,17 @@ def create_gui():
 
     root.mainloop()
 
+# ---------------- RUN MODES ----------------
 if __name__ == "__main__":
-    mode = input("Choose mode: (1) CLI (2) GUI: ").strip()
+    mode = input("Choose mode: (1) CLI (2) GUI (3) Web): ").strip()
 
     if mode == "1":
         main_loop()
     elif mode == "2":
         create_gui()
+    elif mode == "3":
+        import os
+        port = int(os.environ.get("PORT", 5000))
+        app.run(host="0.0.0.0", port=port)
     else:
-        print("Invalid option. Please choose 1 for CLI or 2 for GUI.")
+        print("Invalid option. Please choose 1 for CLI, 2 for GUI, or 3 for Web.")
