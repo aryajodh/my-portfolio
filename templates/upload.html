@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Classifier</title>
+    <style>
+        /* Default Light Theme */
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+        .container {
+            margin-top: 50px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+            transition: background 0.3s ease-in-out;
+        }
+        h2 {
+            color: inherit;
+        }
+        input[type="file"] {
+            margin-top: 20px;
+        }
+        .btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+            margin-top: 15px;
+        }
+        .btn:hover {
+            background: #45a049;
+        }
+        .loading {
+            display: none;
+            font-size: 18px;
+            color: #4CAF50;
+            margin-top: 10px;
+        }
+
+        /* Dark Theme Styles */
+        body.dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        .container.dark-mode {
+            background: #1e1e1e;
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Toggle Button */
+        .theme-toggle {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: #555;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s ease-in-out;
+        }
+        .theme-toggle:hover {
+            background: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+
+    <div class="container">
+        <h2>Upload an Image for Classification</h2>
+        <form action="/" method="post" enctype="multipart/form-data" onsubmit="showLoading()">
+            <input type="file" name="file" accept="image/*" required>
+            <br>
+            <button type="submit" class="btn">Upload and Classify</button>
+        </form>
+        <p class="loading" id="loading">Processing your image... ⏳</p>
+    </div>
+
+    <script>
+        function showLoading() {
+            document.getElementById("loading").style.display = "block";
+        }
+
+        // Load dark mode preference
+        document.addEventListener("DOMContentLoaded", function() {
+            if (localStorage.getItem("theme") === "dark") {
+                document.body.classList.add("dark-mode");
+                document.querySelector(".container").classList.add("dark-mode");
+                document.querySelector(".theme-toggle").textContent = "☀️ Light Mode";
+            }
+        });
+
+        // Theme toggle function
+        function toggleTheme() {
+            document.body.classList.toggle("dark-mode");
+            document.querySelector(".container").classList.toggle("dark-mode");
+
+            let themeToggle = document.querySelector(".theme-toggle");
+            if (document.body.classList.contains("dark-mode")) {
+                themeToggle.textContent = "☀️ Light Mode";
+                localStorage.setItem("theme", "dark");
+            } else {
+                themeToggle.textContent = "🌙 Dark Mode";
+                localStorage.setItem("theme", "light");
+            }
+        }
+    </script>
+
+</body>
+</html>
